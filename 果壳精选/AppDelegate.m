@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "BestController.h"
+#import "LeftController.h"
+#import "MMDrawerController.h"
+#import "CenterController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +20,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // 精选视图
+    CenterController *centerVc = [[CenterController alloc]init];
+    UINavigationController *centerNav = [[UINavigationController alloc]initWithRootViewController:centerVc];
+    
+    // 左边视图
+    LeftController *leftVc = [[LeftController alloc]init];
+    
+    // 抽屉效果
+    MMDrawerController *MMDrawerViewVc = [[MMDrawerController alloc]initWithCenterViewController:centerNav leftDrawerViewController:leftVc];
+    [MMDrawerViewVc setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [MMDrawerViewVc setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    MMDrawerViewVc.maximumLeftDrawerWidth = 250;
+    
+    self.window.rootViewController = MMDrawerViewVc;
+
+    
     return YES;
 }
 
