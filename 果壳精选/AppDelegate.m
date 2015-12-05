@@ -11,6 +11,8 @@
 #import "LeftController.h"
 #import "MMDrawerController.h"
 #import "CenterController.h"
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 
 @interface AppDelegate ()
 
@@ -33,10 +35,15 @@
     [MMDrawerViewVc setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [MMDrawerViewVc setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
-    MMDrawerViewVc.maximumLeftDrawerWidth = 250;
+    // 设置左边抽屉宽度
+    MMDrawerViewVc.maximumLeftDrawerWidth = 150;
     
     self.window.rootViewController = MMDrawerViewVc;
 
+    // 初始化友盟分享
+//    [UMSocialData setAppKey:@"5662812967e58e2991005b9f"];
+//    [UMSocialConfig hiddenNotInstallPlatforms:nil];
+    
     
     return YES;
 }

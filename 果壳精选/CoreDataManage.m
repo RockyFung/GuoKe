@@ -88,7 +88,6 @@
     request.predicate = predicate;
     // 返回model
     model = [context executeFetchRequest:request error:nil].firstObject;
-    NSLog(@"===%@",model.link_v2);
     return model ;
 }
 

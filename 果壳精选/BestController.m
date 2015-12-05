@@ -217,7 +217,7 @@
     
     // 当连接没有给宽高的时候赋值
     if (width == 0 || height == 0) {
-        picSize = CGSizeMake(600, 400);
+        picSize = CGSizeMake(600, 500);
     }
     
     return picSize;

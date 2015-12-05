@@ -11,7 +11,7 @@
 #import "CollectController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "BestController.h"
-
+#import "Define.h"
 
 @interface LeftController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor grayColor];
     
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 150, KScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -36,7 +36,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cell";
@@ -44,7 +44,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    cell.accessoryType =  UITableViewCellAccessoryDetailDisclosureButton;
+    cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"首页";
