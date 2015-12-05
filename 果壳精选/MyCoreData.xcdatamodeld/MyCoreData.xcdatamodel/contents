@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="CoreDataModel" representedClassName="CoreDataModel" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date_created" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date_picked" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="detailId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="headline_img" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="headline_img_tb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link_v2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CoreDataModel" positionX="-54" positionY="-9" width="128" height="195"/>
+    </elements>
+</model>

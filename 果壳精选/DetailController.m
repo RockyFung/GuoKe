@@ -10,17 +10,33 @@
 #import "Define.h"
 #import "UIImageView+WebCache.h"
 #import "LinkController.h"
+#import "DIYButton.h"
+#import "CoreDataManage.h"
+
 
 @interface DetailController () < UIWebViewDelegate, UIScrollViewDelegate>
 
-@property (nonatomic,strong)UITableView *tableView;
-@property (nonatomic,strong)UIImageView *topView;
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UIImageView *topView;
 @property (nonatomic, strong) UIWebView *webView; // 网页显示
+@property (nonatomic, strong) UIButton *rightBtn; // 收藏按钮
+@property (nonatomic, assign) BOOL isCollect; // 用来判断有没有收藏过
 @end
 
 const CGFloat TopViewH = 168; // 图片的高度
 
 @implementation DetailController
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // 页面即将出现的时候判断有没有收藏过
+    if([CoreDataManage findCoreDataWithUrl:self.model.link_v2]){
+        [self.rightBtn setImage:[UIImage imageNamed:@"shoucang2"] forState:UIControlStateNormal];
+    }else{
+        [self.rightBtn setImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +51,7 @@ const CGFloat TopViewH = 168; // 图片的高度
 
     
     //添加网络视图
-    self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - 64)];
     // 自动对页面进行缩放以适应屏幕
     self.webView.scalesPageToFit = YES;
     self.webView.delegate = self;
@@ -43,23 +59,48 @@ const CGFloat TopViewH = 168; // 图片的高度
     self.webView.gapBetweenPages = 100;
     NSURL *targetUrl = [NSURL URLWithString:self.model.link_v2];
     [self.webView loadRequest:[NSURLRequest requestWithURL:targetUrl]];
-
-    
     [self.webView.scrollView addSubview:_topView];
     self.webView.scrollView.contentInset = UIEdgeInsetsMake(TopViewH+20, 0, 0, 0);
     [self.view addSubview:_webView];
 
+    // 添加收藏按钮
+    self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.rightBtn.frame =CGRectMake(0, 0, 25, 25);
     
+    
+    [self.rightBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc]initWithCustomView:_rightBtn];
+    self.navigationItem.rightBarButtonItem = rightBarBtn;
+
+    
+    
+}
+
+#pragma mark - 收藏按钮
+- (void)collectAction:(UIButton *)button
+{
+///////// 收藏
+    if(![CoreDataManage findCoreDataWithUrl:self.model.link_v2]){
+        NSLog(@"收藏");
+        [self.rightBtn setImage:[UIImage imageNamed:@"shoucang2"] forState:UIControlStateNormal];
+        // 添加到收藏夹
+        [CoreDataManage addCoreData:self.model];
+    }
+///////// 取消收藏
+    else{
+        [self.rightBtn setImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
+        // 取消收藏
+        [CoreDataManage deleteCoreDataWithUrl:self.model.link_v2];
+    }
 }
 
 
 
-
+#pragma mark - webView代理方法
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSLog(@"%@",request.URL);
     if (navigationType == 0) {
-        
         
         // 警告框
         UIAlertController *alertController =[UIAlertController alertControllerWithTitle:@"即将跳转到其他网页！" message:nil preferredStyle:UIAlertControllerStyleAlert];

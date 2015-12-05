@@ -45,20 +45,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"每日精选";
     self.navigationController.hidesBarsOnSwipe = NO;
 
     
-    // 请求数据
-    self.url = @"http://apis.guokr.com/handpick/article.json?retrieve_type=by_since";
+    // 用于往期时间累计
+//    self.time = 1448928055;
+    NSDate *date = [NSDate date];
+    NSTimeInterval now = [date timeIntervalSince1970];
+    self.time = now - 60*60*50;
     
+    
+    // 请求数据
+    //    self.url = @"http://apis.guokr.com/handpick/article.json?retrieve_type=by_since";
+    self.url = [NSString stringWithFormat:@"http://apis.guokr.com/handpick/article.json?retrieve_type=by_since&since=%.f",now];
     [self setNetWorkRequestWithUrlString:_url];
     
-    // 用于往期时间累计
-    self.time = 1448928055;
-
 
     // 先创建一个布局对象
     WaterFlowLayout *layout = [[WaterFlowLayout alloc]init];
@@ -84,62 +88,21 @@
     
     
     // 下拉刷新
-//    [self.collectionView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(headerAction)];
+    [self.collectionView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(headerAction)];
     // 下拉加载
     [self.collectionView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
 
-    
-    // 添加通知
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeSelf:) name:@"changeToCollect" object:nil];
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeSelf:) name:@"changeToBest" object:nil];
-    
 }
 
-
-//// 定义左边按钮
-//- (void)setupLeftButton
-//{
-//    MMDrawerBarButtonItem *leftButton = [[MMDrawerBarButtonItem alloc]initWithTarget:self action:@selector(leftAction) withTitle:nil];
-//    [leftButton setMenuButtonColor:[UIColor blackColor] forState:UIControlStateNormal]; // button颜色
-//    [leftButton setMenuButtonColor:[UIColor grayColor] forState:UIControlStateHighlighted]; // 点击颜色
-//    [self.navigationItem setLeftBarButtonItem:leftButton animated:YES];
-//}
-//
-//#pragma mark - 左边按钮
-//- (void)leftAction
-//{
-//    // 左边视图出现
-//    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-//}
-
-// 切换页面方法
-//- (void)changeSelf:(NSNotification *)notification
-//{
-//    // 收藏页面
-//    if([notification.name isEqualToString:@"changeToCollect"]){
-//        self.collectVc = [[CollectController alloc]initWithStyle:UITableViewStylePlain];
-//        self.collectionView.hidden = YES;
-//        self.navigationItem.title = @"收藏";
-//        [self.view addSubview:_collectVc.tableView];
-//        [self addChildViewController:self.collectVc];
-//        NSLog(@"添加collect");
-//    }else if ([notification.name isEqualToString:@"changeToBest"]){
-//        self.collectionView.hidden = NO;
-//        self.navigationItem.title = @"每日精选";
-//        [self.collectVc removeFromParentViewController];
-//        [self.collectVc.tableView removeFromSuperview];
-//        NSLog(@"移除collect");
-//    }
-//}
 
 
 #pragma mark - 上拉加载更多，下拉刷新
 // 下拉刷新
 - (void)headerAction
 {
-    [self.modelArray removeAllObjects];
-    [self setNetWorkRequestWithUrlString:self.url];
-//    [self.collectionView reloadData];
+//    [self.modelArray removeAllObjects];
+//    [self setNetWorkRequestWithUrlString:self.url];
+    [self.collectionView reloadData];
     [self.collectionView.header endRefreshing];
 }
 // 上拉加载更多
@@ -149,7 +112,7 @@
     [self setNetWorkRequestWithUrlString:url];
     [self.collectionView reloadData];
     [self.collectionView.footer endRefreshing];
-    self.time -= 60*60*44; // 每上拉一次往前48小时
+    self.time -= 60*60*48; // 每上拉一次往前48小时
 }
 
 

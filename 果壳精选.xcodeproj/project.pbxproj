@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790318D91C118D10005B98BB /* CoreDataManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 790318D81C118D10005B98BB /* CoreDataManage.m */; };
+		790318DC1C118E81005B98BB /* MyCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 790318DA1C118E81005B98BB /* MyCoreData.xcdatamodeld */; };
+		790318E41C118FE4005B98BB /* CoreDataModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 790318E11C118FE4005B98BB /* CoreDataModel+CoreDataProperties.m */; };
+		790318E51C118FE4005B98BB /* CoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790318E31C118FE4005B98BB /* CoreDataModel.m */; };
+		790318E81C11CAA7005B98BB /* CollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790318E71C11CAA7005B98BB /* CollectCell.m */; };
 		790C0E6E1C0F343000ED2452 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790C0E6D1C0F343000ED2452 /* DetailController.m */; };
 		796BCC3D1C0DDCE0003D4993 /* WaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 796BCC3C1C0DDCE0003D4993 /* WaterFlowLayout.m */; };
 		796D2BA71C113D6C009801CD /* CollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796D2BA61C113D6C009801CD /* CollectController.m */; };
@@ -95,6 +100,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		790318D71C118D10005B98BB /* CoreDataManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManage.h; sourceTree = "<group>"; };
+		790318D81C118D10005B98BB /* CoreDataManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManage.m; sourceTree = "<group>"; };
+		790318DB1C118E81005B98BB /* MyCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyCoreData.xcdatamodel; sourceTree = "<group>"; };
+		790318E01C118FE4005B98BB /* CoreDataModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreDataModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		790318E11C118FE4005B98BB /* CoreDataModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreDataModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		790318E21C118FE4005B98BB /* CoreDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataModel.h; sourceTree = "<group>"; };
+		790318E31C118FE4005B98BB /* CoreDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataModel.m; sourceTree = "<group>"; };
+		790318E61C11CAA7005B98BB /* CollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectCell.h; sourceTree = "<group>"; };
+		790318E71C11CAA7005B98BB /* CollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectCell.m; sourceTree = "<group>"; };
 		790C0E6C1C0F343000ED2452 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
 		790C0E6D1C0F343000ED2452 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
 		796BCC3B1C0DDCE0003D4993 /* WaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowLayout.h; sourceTree = "<group>"; };
@@ -245,6 +259,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		790318CD1C11899F005B98BB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				790318DA1C118E81005B98BB /* MyCoreData.xcdatamodeld */,
+				790318E01C118FE4005B98BB /* CoreDataModel+CoreDataProperties.h */,
+				790318E11C118FE4005B98BB /* CoreDataModel+CoreDataProperties.m */,
+				790318E21C118FE4005B98BB /* CoreDataModel.h */,
+				790318E31C118FE4005B98BB /* CoreDataModel.m */,
+				790318D71C118D10005B98BB /* CoreDataManage.h */,
+				790318D81C118D10005B98BB /* CoreDataManage.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		790C0E651C0F31EE00ED2452 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +366,7 @@
 				79E2DCDF1C0DA42800FB38DD /* AppDelegate.m */,
 				79E2DCE11C0DA42800FB38DD /* ViewController.h */,
 				79E2DCE21C0DA42800FB38DD /* ViewController.m */,
+				790318CD1C11899F005B98BB /* CoreData */,
 				79E2DD2B1C0DB52800FB38DD /* Left */,
 				796D2BA81C1163A8009801CD /* Center */,
 				790C0E651C0F31EE00ED2452 /* Detail */,
@@ -465,6 +494,8 @@
 		79E2DD221C0DB4D000FB38DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				790318E61C11CAA7005B98BB /* CollectCell.h */,
+				790318E71C11CAA7005B98BB /* CollectCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -795,6 +826,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790318E41C118FE4005B98BB /* CoreDataModel+CoreDataProperties.m in Sources */,
 				79E2DD931C0DCA0000FB38DD /* UIImage+GIF.m in Sources */,
 				79E2DDB61C0DCA2800FB38DD /* MJRefreshGifFooter.m in Sources */,
 				79E2DD901C0DCA0000FB38DD /* SDWebImageManager.m in Sources */,
@@ -806,6 +838,7 @@
 				79E2DD1A1C0DB47600FB38DD /* MMDrawerVisualState.m in Sources */,
 				79E2DD321C0DB57000FB38DD /* LeftController.m in Sources */,
 				79E2DD351C0DB58600FB38DD /* SettingController.m in Sources */,
+				790318DC1C118E81005B98BB /* MyCoreData.xcdatamodeld in Sources */,
 				79E2DDB51C0DCA2800FB38DD /* MJRefreshFooter.m in Sources */,
 				796D2BAC1C11647E009801CD /* CenterController.m in Sources */,
 				79E2DD8D1C0DCA0000FB38DD /* SDWebImageDownloader.m in Sources */,
@@ -823,6 +856,7 @@
 				79E2DD191C0DB47600FB38DD /* MMDrawerController.m in Sources */,
 				79E2DD601C0DC61400FB38DD /* DIYButton.m in Sources */,
 				79E2DD181C0DB47600FB38DD /* MMDrawerBarButtonItem.m in Sources */,
+				790318E81C11CAA7005B98BB /* CollectCell.m in Sources */,
 				796D2BB11C117553009801CD /* LinkController.m in Sources */,
 				79E2DD2A1C0DB51A00FB38DD /* BestController.m in Sources */,
 				79E2DD891C0DCA0000FB38DD /* NSData+ImageContentType.m in Sources */,
@@ -835,6 +869,7 @@
 				79E2DDBC1C0DCA2800FB38DD /* UIScrollView+MJRefresh.m in Sources */,
 				79E2DD8A1C0DCA0000FB38DD /* SDImageCache.m in Sources */,
 				79E2DDBA1C0DCA2800FB38DD /* MJRefreshLegendHeader.m in Sources */,
+				790318D91C118D10005B98BB /* CoreDataManage.m in Sources */,
 				79E2DD8B1C0DCA0000FB38DD /* SDWebImageCompat.m in Sources */,
 				79E2DD5D1C0DC28000FB38DD /* BestModel.m in Sources */,
 				79E2DD871C0DCA0000FB38DD /* MKAnnotationView+WebCache.m in Sources */,
@@ -842,6 +877,7 @@
 				79E2DD8E1C0DCA0000FB38DD /* SDWebImageDownloaderOperation.m in Sources */,
 				79E2DCE01C0DA42800FB38DD /* AppDelegate.m in Sources */,
 				79E2DCDD1C0DA42800FB38DD /* main.m in Sources */,
+				790318E51C118FE4005B98BB /* CoreDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,6 +1124,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		790318DA1C118E81005B98BB /* MyCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				790318DB1C118E81005B98BB /* MyCoreData.xcdatamodel */,
+			);
+			currentVersion = 790318DB1C118E81005B98BB /* MyCoreData.xcdatamodel */;
+			path = MyCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 79E2DCD01C0DA42800FB38DD /* Project object */;
 }

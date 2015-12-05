@@ -14,11 +14,11 @@
 @property (nonatomic, copy) NSString *headline_img; // 全图
 @property (nonatomic, copy) NSString *headline_img_tb; // 1/2图片
 @property (nonatomic, copy) NSString *title; // 标题
-@property (nonatomic, assign) NSTimeInterval date_created; // 创建时间戳
-@property (nonatomic, assign) NSTimeInterval date_picked; // 上传时间
+@property (nonatomic, assign) double date_created; // 创建时间戳
+@property (nonatomic, assign) double date_picked; // 上传时间
 @property (nonatomic, assign) NSInteger detailId; // 拼接id
 @property (nonatomic, copy) NSString *source_name; // 来源
 @property (nonatomic, copy) NSString *link_v2; // 详情链接
-
+@property (nonatomic, copy) NSString *summary; // 简介 用于收藏页面
 
 @end

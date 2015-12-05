@@ -30,6 +30,9 @@
     self.webView.delegate = self;
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.gapBetweenPages = 100;
+    [self.webView canGoBack];
+    [self.webView canGoForward];
+    
     NSURL *targetUrl = [NSURL URLWithString:self.link];
     [self.webView loadRequest:[NSURLRequest requestWithURL:targetUrl]];
     [self.view addSubview:_webView];
@@ -42,11 +45,44 @@
     
     // 底部工具栏添加button
     // 返回
+    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.frame = CGRectMake(30, 10, 30, 30);
+    [back setImage:[UIImage imageNamed:@"zuo"] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [toolBar addSubview:back];
+    
+    // 下一页
+    UIButton *next = [UIButton buttonWithType:UIButtonTypeCustom];
+    next.frame = CGRectMake(KScreenWidth - 30 - 30, 10, 30, 30);
+    [next setImage:[UIImage imageNamed:@"you"] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(nextAction) forControlEvents:UIControlEventTouchUpInside];
+    [toolBar addSubview:next];
+    
+    // 刷新
+    UIButton *refresh = [UIButton buttonWithType:UIButtonTypeCustom];
+    refresh.frame = CGRectMake(KScreenWidth / 2 - 15, 10, 30, 30);
+    [refresh setImage:[UIImage imageNamed:@"shuaxin"] forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventTouchUpInside];
+    [toolBar addSubview:refresh];
     
     
 }
 
+#pragma mark - 按键方法实现
+- (void)backAction
+{
+    [self.webView goBack];
+}
 
+- (void)nextAction
+{
+    [self.webView goForward];
+}
+
+- (void)refreshAction
+{
+    [self.webView reload];
+}
 
 
 

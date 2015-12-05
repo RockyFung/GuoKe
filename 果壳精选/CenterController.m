@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"精 选";
-    
+    self.navigationController.navigationBar.translucent = NO;
     
     [self setupLeftButton];
     
@@ -62,7 +62,7 @@
 }
 
 
-// 切换页面方法
+#pragma mark - 切换页面方法
 - (void)changeSelf:(NSNotification *)notification
 {
 //////// 精选页面
@@ -124,8 +124,8 @@
 - (void)addCollectVc
 {
     if(!self.collectVc){ // 保证只添加一次
-        self.collectVc = [[CollectController alloc]init];
-        [self.view addSubview: _collectVc.tableView];
+        self.collectVc = [[CollectController alloc]initWithStyle:UITableViewStylePlain];
+        [self.view addSubview: _collectVc.view];
         [self addChildViewController:_collectVc];
         NSLog(@"添加收藏页面");
     }
