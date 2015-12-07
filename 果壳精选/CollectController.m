@@ -12,6 +12,8 @@
 #import "BestModel.h"
 #import "Define.h"
 #import "DetailController.h"
+
+
 @interface CollectController ()
 
 @property (nonatomic, strong) NSArray *modelArray;
@@ -51,7 +53,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 145;
+    return KScreenWidth / 2.58;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,6 +75,7 @@
     DetailController *detailVc = [[DetailController alloc]init];
     detailVc.model = self.modelArray[indexPath.row];
     [self.navigationController pushViewController:detailVc animated:YES];
+    
 }
 
 

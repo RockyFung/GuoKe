@@ -12,6 +12,9 @@
 #import "UIViewController+MMDrawerController.h"
 #import "BestController.h"
 #import "Define.h"
+#import "LoginController.h"
+#import <BmobSDK/Bmob.h>
+#import "JCAlertView.h"
 
 @interface LeftController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -26,7 +29,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor grayColor];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 150, KScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth / 2.5, KScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -73,6 +76,7 @@
             break;
             }
         case 1:{
+  
             [[NSNotificationCenter defaultCenter]postNotificationName:@"changeToCollect" object:nil];
             [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil]; // 点击关闭
             [[NSNotificationCenter defaultCenter]removeObserver:self name:@"changToCollect" object:nil];

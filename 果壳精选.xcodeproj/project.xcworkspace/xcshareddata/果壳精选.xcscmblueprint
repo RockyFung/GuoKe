@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D246C67B5ED551ADFCD9F49C594A341C59BB1BA4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CD28D86687BC5E1A821D0F9F66A4041883BD9C08" : 0,
+    "D246C67B5ED551ADFCD9F49C594A341C59BB1BA4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1570EF65-4643-4B27-8BE9-F3426C42F4C5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CD28D86687BC5E1A821D0F9F66A4041883BD9C08" : "SimpleHappy\/",
+    "D246C67B5ED551ADFCD9F49C594A341C59BB1BA4" : "%E6%9E%9C%E5%A3%B3%E7%B2%BE%E9%80%89\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "果壳精选",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "果壳精选.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/RockyFung\/SimpleHappy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CD28D86687BC5E1A821D0F9F66A4041883BD9C08"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/RockyFung\/GuoKe.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D246C67B5ED551ADFCD9F49C594A341C59BB1BA4"
+    }
+  ]
+}

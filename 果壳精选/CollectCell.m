@@ -27,37 +27,37 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         
-        CGFloat cellHeight = 145;
+        CGFloat cellHeight = KScreenWidth / 2.58;
         
-        
-        
+         CGFloat iconWidth = 20;
+    
         // 标题
-        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, KScreenWidth - 20, 40)];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, KScreenWidth - iconWidth, iconWidth * 2)];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:iconWidth];
         [self.contentView addSubview:_titleLabel];
         
         // 简介
-        self.summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 50, KScreenWidth - 20, 60)];
-        self.summaryLabel.font = [UIFont systemFontOfSize:16];
+        self.summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, iconWidth * 2.5, KScreenWidth - iconWidth, iconWidth * 3)];
+        self.summaryLabel.font = [UIFont systemFontOfSize:KScreenWidth / 23.4];
         self.summaryLabel.numberOfLines = 3;
         [self.contentView addSubview:_summaryLabel];
         
-        CGFloat iconWidth = 20;
+       
         // 来源
-        self.sourcePic = [[UIImageView alloc]initWithFrame:CGRectMake(10, cellHeight - 25, iconWidth, iconWidth)];
+        self.sourcePic = [[UIImageView alloc]initWithFrame:CGRectMake(10, cellHeight - iconWidth - 5, iconWidth, iconWidth)];
         self.sourcePic.image = [UIImage imageNamed:@"laiyuan"];
         [self.contentView addSubview:_sourcePic];
         
-        self.sourcelabel = [[UILabel alloc]initWithFrame:CGRectMake(30, cellHeight - 25, (KScreenWidth - 3 * iconWidth) / 2, iconWidth)];
+        self.sourcelabel = [[UILabel alloc]initWithFrame:CGRectMake(iconWidth * 1.5, cellHeight - iconWidth - 5, (KScreenWidth - 3 * iconWidth) / 2, iconWidth)];
         [self.contentView addSubview:_sourcelabel];
         
         
         // 发布时间
-        self.timePic = [[UIImageView alloc]initWithFrame:CGRectMake(KScreenWidth / 2 - 10, cellHeight - 25, iconWidth, iconWidth)];
+        self.timePic = [[UIImageView alloc]initWithFrame:CGRectMake(KScreenWidth / 2 - 10, cellHeight - iconWidth - 5, iconWidth, iconWidth)];
         self.timePic.image = [UIImage imageNamed:@"shijian"];
         [self.contentView addSubview:_timePic];
         
-        self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(KScreenWidth / 2 - 10 + 20, cellHeight - 25, (KScreenWidth - 3 * iconWidth) / 2, iconWidth)];
+        self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(KScreenWidth / 2  + iconWidth / 2, cellHeight - iconWidth - 5, (KScreenWidth - 3 * iconWidth) / 2, iconWidth)];
         [self.contentView addSubview:_timeLabel];
         
     }

@@ -37,7 +37,7 @@
     self.webView.scalesPageToFit = YES;
     self.webView.delegate = self;
     self.webView.backgroundColor = [UIColor whiteColor];
-    self.webView.gapBetweenPages = 100;
+    self.webView.gapBetweenPages = KScreenWidth / 3.75;
     [self.webView canGoBack];
     [self.webView canGoForward];
     

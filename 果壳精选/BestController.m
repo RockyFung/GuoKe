@@ -17,6 +17,8 @@
 #import "DetailController.h"
 #import "MJRefresh.h"
 #import "CollectController.h"
+#import "AFNetworking.h"
+#import "JCAlertView.h"
 
 @interface BestController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateWaterFlowLayout>
 @property (nonatomic, strong) NSMutableArray *imageArray;
@@ -66,7 +68,7 @@
 
     // 先创建一个布局对象
     WaterFlowLayout *layout = [[WaterFlowLayout alloc]init];
-    layout.itemSize = CGSizeMake((KScreenWidth - 30) / 2, 0); // 返回items的高和宽
+    layout.itemSize = CGSizeMake((KScreenWidth - KScreenWidth / 12.5) / 2, 0); // 返回items的高和宽
     layout.sectionInsets = UIEdgeInsetsMake(0, 10, 10, 10);
     layout.numberOfColumns = 2; // 列数
     layout.interitemSpacing = 10; // 列间距
@@ -100,7 +102,7 @@
 // 下拉刷新
 - (void)headerAction
 {
-//    [self.modelArray removeAllObjects];
+//    self.modelArray = [NSMutableArray array];
 //    [self setNetWorkRequestWithUrlString:self.url];
     [self.collectionView reloadData];
     [self.collectionView.header endRefreshing];
@@ -155,7 +157,7 @@
         // 得到title的可变高度
         CGFloat titleHeight = [self stringSizeWithFont:[UIFont systemFontOfSize:15] string:model.title width:picSize.width].height;
         
-        return 145 * picSize.height / picSize.width  + 10 + titleHeight + 10 + 20 + 10; // 145??
+        return 145 * picSize.height / picSize.width   + titleHeight + KScreenWidth / 7.5; // 145??
     }
     return 0;
 }
@@ -173,25 +175,32 @@
 #pragma mark - 数据请求
 - (void)setNetWorkRequestWithUrlString:(NSString *)urlString
 {
-    [[[NSURLSession sharedSession]dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
+    AFHTTPRequestOperationManager *manager =[AFHTTPRequestOperationManager manager];
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
-        if (error) {
-            NSLog(@"网络请求错误,%@",error);
-            return ;
-        }
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//        NSLog(@"%@---%@",responseObject,[responseObject class]);
+        
+        NSDictionary *dic = responseObject;
         NSMutableArray *resultArray = dic[@"result"];
         for (NSDictionary *dict in resultArray) {
             BestModel *model = [[BestModel alloc]init];
             [model setValuesForKeysWithDictionary:dict];
             [self.modelArray addObject:model];
         }
-        // 刷新数据
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-        });
-//                 NSLog(@"%@",self.modelArray);
-    }]resume];
+
+        [self.collectionView reloadData];
+        NSLog(@"----- %d",[NSThread isMainThread]);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        [self showAlertWithOneButton];
+    }];
+    
+}
+
+
+- (void)showAlertWithOneButton
+{
+    [JCAlertView showOneButtonWithTitle:@"⚠️无网络！" Message:@"请检查您的网络设置" ButtonType:JCAlertViewButtonTypeDefault ButtonTitle:@"知道了" Click:nil];
 }
 
 

@@ -13,10 +13,11 @@
 #import "DIYButton.h"
 #import "CoreDataManage.h"
 #import "UIViewController+MMDrawerController.h"
-
+#import <BmobSDK/Bmob.h>
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
-
+#import "JCAlertView.h"
+#import "LoginController.h"
 
 @interface DetailController () < UIWebViewDelegate, UIScrollViewDelegate>
 
@@ -67,7 +68,7 @@ const CGFloat TopViewH = 168; // 图片的高度
     self.webView.delegate = self;
     self.webView.scrollView.delegate = self; // 设置scrollView的代理
     self.webView.backgroundColor = [UIColor whiteColor];
-    self.webView.gapBetweenPages = 100;
+    self.webView.gapBetweenPages = KScreenWidth / 3.75;
     NSURL *targetUrl = [NSURL URLWithString:self.model.link_v2];
     [self.webView loadRequest:[NSURLRequest requestWithURL:targetUrl]];
     self.webView.scrollView.contentInset = UIEdgeInsetsMake(TopViewH, 0, 0, 0);
@@ -77,16 +78,16 @@ const CGFloat TopViewH = 168; // 图片的高度
     [self.webView.scrollView insertSubview:_topView atIndex:0]; // 把视图放到scrollView最底层（让webView在前面）
 
 
-
+    CGFloat width = KScreenWidth / 15;
     // 添加收藏按钮
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.rightBtn.frame =CGRectMake(0, 0, 25, 25);
+    self.rightBtn.frame =CGRectMake(0, 0, width, width);
     [self.rightBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc]initWithCustomView:_rightBtn];
     
     // 添加分享按钮
     self.shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.shareBtn.frame =CGRectMake(0, 0, 25, 25);
+    self.shareBtn.frame =CGRectMake(0, 0, width, width);
     [self.shareBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.shareBtn setImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
     UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc]initWithCustomView:_shareBtn];
@@ -103,20 +104,37 @@ const CGFloat TopViewH = 168; // 图片的高度
 #pragma mark - 收藏按钮
 - (void)collectAction:(UIButton *)button
 {
-///////// 收藏
-    if(![CoreDataManage findCoreDataWithUrl:self.model.link_v2]){
-        NSLog(@"收藏");
-        [self.rightBtn setImage:[UIImage imageNamed:@"shoucang2"] forState:UIControlStateNormal];
-        // 添加到收藏夹
-        [CoreDataManage addCoreData:self.model];
+    // 先判断有没有登陆
+    BmobUser *bUser = [BmobUser getCurrentUser];
+    if (bUser) {
+        
+        ///////// 收藏
+        if(![CoreDataManage findCoreDataWithUrl:self.model.link_v2]){
+            NSLog(@"收藏");
+            [self.rightBtn setImage:[UIImage imageNamed:@"shoucang2"] forState:UIControlStateNormal];
+            // 添加到收藏夹
+            [CoreDataManage addCoreData:self.model];
+        }
+        ///////// 取消收藏
+        else{
+            NSLog(@"取消收藏");
+            [self.rightBtn setImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
+            // 取消收藏
+            [CoreDataManage deleteCoreDataWithUrl:self.model.link_v2];
+        }
+        
+    }else{
+        
+        // 登陆失败
+        [JCAlertView showTwoButtonsWithTitle:@"收藏失败!" Message:@"请先登陆" ButtonType:JCAlertViewButtonTypeCancel ButtonTitle:@"先看看" Click:nil ButtonType:JCAlertViewButtonTypeDefault ButtonTitle:@"去登陆" Click:^{
+            // 跳到注册页面
+            LoginController *loginVc = [[LoginController alloc]init];
+            [self presentViewController:loginVc animated:YES completion:nil];
+            
+        }];
+
     }
-///////// 取消收藏
-    else{
-        NSLog(@"取消收藏");
-        [self.rightBtn setImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
-        // 取消收藏
-        [CoreDataManage deleteCoreDataWithUrl:self.model.link_v2];
-    }
+    
 }
 
 
@@ -126,12 +144,12 @@ const CGFloat TopViewH = 168; // 图片的高度
     NSLog(@"share......");
     
     
-    NSString *str = [NSString stringWithFormat:@"%@ \n %@ \n分享自 GuoKe", self.model.title, self.model.link_v2];
+    NSString *str = [NSString stringWithFormat:@"%@ \n %@ ", self.model.title, self.model.link_v2];
     
-    [UMSocialWechatHandler setWXAppId:@"wxaae072fcd1c171fa" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" url:self.model.link_v2];
+    [UMSocialWechatHandler setWXAppId:@"wx575c75f120386a56" appSecret:@"bbeae79f0c8526e5539a2bf7d121c362" url:self.model.link_v2];
     [UMSocialSnsService presentSnsIconSheetView:self appKey:@"5662812967e58e2991005b9f"
                                       shareText:str
-                                     shareImage:self.model.headline_img
+                                     shareImage:self.topView.image
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline, nil]
                                        delegate:nil];
     

@@ -13,6 +13,9 @@
 #import "CenterController.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
+#import <BmobSDK/Bmob.h>
+#import "Define.h"
+
 
 @interface AppDelegate ()
 
@@ -36,7 +39,7 @@
     [MMDrawerViewVc setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
     // 设置左边抽屉宽度
-    MMDrawerViewVc.maximumLeftDrawerWidth = 150;
+    MMDrawerViewVc.maximumLeftDrawerWidth = KScreenWidth / 2.5;
     
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     
@@ -47,6 +50,9 @@
     [UMSocialConfig hiddenNotInstallPlatforms:nil];
     
     
+    // 初始化Bmob
+    
+    [Bmob registerWithAppKey:@"df90c727ac221c4e0da52c1e6c63b2e8"];
     return YES;
 }
 

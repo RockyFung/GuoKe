@@ -123,6 +123,9 @@
 {
     [super layoutSubviews];
 
+    CGFloat iconWidth = 20;
+    
+    
     CGFloat x = self.bounds.origin.x;
     CGFloat y = self.bounds.origin.y;
     CGFloat width = self.bounds.size.width;
@@ -133,20 +136,20 @@
     CGFloat labelHeight = [self stringSizeWithFont:[UIFont systemFontOfSize:15] string:self.model.title width:(KScreenWidth - 3 * 10) / 2].height;
     
     // 图片高度
-    self.picImageView.frame = CGRectMake(x, y, width, height - labelHeight - 20 - 20);
+    self.picImageView.frame = CGRectMake(x, y, width, height - labelHeight - iconWidth *2);
     
     // title高度
     self.titleLabel.frame = CGRectMake(x+5, self.picImageView.frame.size.height + 10, width - 10, labelHeight);
     
     
-    CGFloat iconWidth = 20;
+    
     // 来源label高度
-    self.sourcePic.frame = CGRectMake(x , self.picImageView.frame.size.height + self.titleLabel.frame.size.height + 20, iconWidth , iconWidth);
-    self.sourcelabel.frame = CGRectMake(x+iconWidth , self.picImageView.frame.size.height + self.titleLabel.frame.size.height + 20, width / 2 - iconWidth , iconWidth);
+    self.sourcePic.frame = CGRectMake(x , self.picImageView.frame.size.height + self.titleLabel.frame.size.height + iconWidth, iconWidth , iconWidth);
+    self.sourcelabel.frame = CGRectMake(x+iconWidth , self.picImageView.frame.size.height + self.titleLabel.frame.size.height + iconWidth, width / 2 - iconWidth , iconWidth);
     
     // 发布时间高度
-    self.timePic.frame = CGRectMake(width / 2, self.picImageView.frame.size.height + self.titleLabel.frame.size.height + 20, iconWidth, iconWidth);
-    self.timeLabel.frame = CGRectMake(width / 2 + iconWidth, self.picImageView.frame.size.height + self.titleLabel.frame.size.height +20, width / 2 - iconWidth, iconWidth);
+    self.timePic.frame = CGRectMake(width / 2, self.picImageView.frame.size.height + self.titleLabel.frame.size.height + iconWidth, iconWidth, iconWidth);
+    self.timeLabel.frame = CGRectMake(width / 2 + iconWidth, self.picImageView.frame.size.height + self.titleLabel.frame.size.height + iconWidth, width / 2 - iconWidth, iconWidth);
     
     
 }
