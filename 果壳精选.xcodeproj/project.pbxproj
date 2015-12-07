@@ -13,6 +13,9 @@
 		790318E51C118FE4005B98BB /* CoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790318E31C118FE4005B98BB /* CoreDataModel.m */; };
 		790318E81C11CAA7005B98BB /* CollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790318E71C11CAA7005B98BB /* CollectCell.m */; };
 		790C0E6E1C0F343000ED2452 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790C0E6D1C0F343000ED2452 /* DetailController.m */; };
+		794826AF1C144F9F00C00B9E /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794826AE1C144F9F00C00B9E /* LoginController.m */; };
+		794826B21C145A1800C00B9E /* RegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794826B11C145A1800C00B9E /* RegistController.m */; };
+		794826B51C145A9400C00B9E /* FindPWController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794826B41C145A9400C00B9E /* FindPWController.m */; };
 		7957D8891C12BCF000DB620C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7957D8881C12BCF000DB620C /* Security.framework */; };
 		7957D88B1C12BCFA00DB620C /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7957D88A1C12BCFA00DB620C /* libiconv.tbd */; };
 		7957D88D1C12BD3700DB620C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7957D88C1C12BD3700DB620C /* SystemConfiguration.framework */; };
@@ -148,6 +151,12 @@
 		790318E71C11CAA7005B98BB /* CollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectCell.m; sourceTree = "<group>"; };
 		790C0E6C1C0F343000ED2452 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
 		790C0E6D1C0F343000ED2452 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
+		794826AD1C144F9F00C00B9E /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		794826AE1C144F9F00C00B9E /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		794826B01C145A1800C00B9E /* RegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistController.h; sourceTree = "<group>"; };
+		794826B11C145A1800C00B9E /* RegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistController.m; sourceTree = "<group>"; };
+		794826B31C145A9400C00B9E /* FindPWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPWController.h; sourceTree = "<group>"; };
+		794826B41C145A9400C00B9E /* FindPWController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPWController.m; sourceTree = "<group>"; };
 		7957D8881C12BCF000DB620C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7957D88A1C12BCFA00DB620C /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		7957D88C1C12BD3700DB620C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -514,6 +523,21 @@
 			path = UMSocial_Sdk_Instructions;
 			sourceTree = "<group>";
 		};
+		7957D8F71C12D71900DB620C /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				7957D8ED1C12C0FB00DB620C /* libz.tbd */,
+				7957D8EB1C12C0F400DB620C /* libstdc++.tbd */,
+				7957D8E91C12C0EC00DB620C /* CoreTelephony.framework */,
+				7957D8E71C12C0E000DB620C /* libsqlite3.tbd */,
+				7957D8E51C12C0D100DB620C /* CoreGraphics.framework */,
+				7957D88C1C12BD3700DB620C /* SystemConfiguration.framework */,
+				7957D88A1C12BCFA00DB620C /* libiconv.tbd */,
+				7957D8881C12BCF000DB620C /* Security.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
 		796D2BA81C1163A8009801CD /* Center */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,14 +574,7 @@
 		79E2DCCF1C0DA42800FB38DD = {
 			isa = PBXGroup;
 			children = (
-				7957D8ED1C12C0FB00DB620C /* libz.tbd */,
-				7957D8EB1C12C0F400DB620C /* libstdc++.tbd */,
-				7957D8E91C12C0EC00DB620C /* CoreTelephony.framework */,
-				7957D8E71C12C0E000DB620C /* libsqlite3.tbd */,
-				7957D8E51C12C0D100DB620C /* CoreGraphics.framework */,
-				7957D88C1C12BD3700DB620C /* SystemConfiguration.framework */,
-				7957D88A1C12BCFA00DB620C /* libiconv.tbd */,
-				7957D8881C12BCF000DB620C /* Security.framework */,
+				7957D8F71C12D71900DB620C /* Framework */,
 				79E2DCDA1C0DA42800FB38DD /* 果壳精选 */,
 				79E2DCF41C0DA42800FB38DD /* 果壳精选Tests */,
 				79E2DCFF1C0DA42800FB38DD /* 果壳精选UITests */,
@@ -755,6 +772,12 @@
 			children = (
 				79E2DD331C0DB58600FB38DD /* SettingController.h */,
 				79E2DD341C0DB58600FB38DD /* SettingController.m */,
+				794826AD1C144F9F00C00B9E /* LoginController.h */,
+				794826AE1C144F9F00C00B9E /* LoginController.m */,
+				794826B01C145A1800C00B9E /* RegistController.h */,
+				794826B11C145A1800C00B9E /* RegistController.m */,
+				794826B31C145A9400C00B9E /* FindPWController.h */,
+				794826B41C145A9400C00B9E /* FindPWController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1083,6 +1106,7 @@
 				790318DC1C118E81005B98BB /* MyCoreData.xcdatamodeld in Sources */,
 				79E2DDB51C0DCA2800FB38DD /* MJRefreshFooter.m in Sources */,
 				796D2BAC1C11647E009801CD /* CenterController.m in Sources */,
+				794826B21C145A1800C00B9E /* RegistController.m in Sources */,
 				79E2DD8D1C0DCA0000FB38DD /* SDWebImageDownloader.m in Sources */,
 				79E2DDB41C0DCA2800FB38DD /* MJRefreshConst.m in Sources */,
 				79E2DDB31C0DCA2800FB38DD /* MJRefreshComponent.m in Sources */,
@@ -1107,9 +1131,11 @@
 				79E2DD8C1C0DCA0000FB38DD /* SDWebImageDecoder.m in Sources */,
 				79E2DD961C0DCA0000FB38DD /* UIImageView+HighlightedWebCache.m in Sources */,
 				79E2DD921C0DCA0000FB38DD /* UIButton+WebCache.m in Sources */,
+				794826B51C145A9400C00B9E /* FindPWController.m in Sources */,
 				79E2DDBD1C0DCA2800FB38DD /* UIView+MJExtension.m in Sources */,
 				79E2DDBC1C0DCA2800FB38DD /* UIScrollView+MJRefresh.m in Sources */,
 				79E2DD8A1C0DCA0000FB38DD /* SDImageCache.m in Sources */,
+				794826AF1C144F9F00C00B9E /* LoginController.m in Sources */,
 				79E2DDBA1C0DCA2800FB38DD /* MJRefreshLegendHeader.m in Sources */,
 				790318D91C118D10005B98BB /* CoreDataManage.m in Sources */,
 				79E2DD8B1C0DCA0000FB38DD /* SDWebImageCompat.m in Sources */,

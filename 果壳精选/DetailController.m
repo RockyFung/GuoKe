@@ -48,6 +48,7 @@ const CGFloat TopViewH = 168; // 图片的高度
     // 页面即将消失的时候让页面可以滑动
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -123,14 +124,17 @@ const CGFloat TopViewH = 168; // 图片的高度
 - (void)shareAction:(UIButton *)btn
 {
     NSLog(@"share......");
-    [UMSocialWechatHandler setWXAppId:@"wxaae072fcd1c171fa" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" url:self.model.link_v2];
+    
     
     NSString *str = [NSString stringWithFormat:@"%@ \n %@ \n分享自 GuoKe", self.model.title, self.model.link_v2];
     
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"565916c367e58ec04b0077f1" shareText:str
-                                     shareImage:self.model.headline_img_tb
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToEmail,UMShareToSms, nil]
+    [UMSocialWechatHandler setWXAppId:@"wxaae072fcd1c171fa" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" url:self.model.link_v2];
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"5662812967e58e2991005b9f"
+                                      shareText:str
+                                     shareImage:self.model.headline_img
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline, nil]
                                        delegate:nil];
+    
 }
 
 

@@ -38,15 +38,22 @@
     // 设置左边抽屉宽度
     MMDrawerViewVc.maximumLeftDrawerWidth = 150;
     
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
     self.window.rootViewController = MMDrawerViewVc;
 
     // 初始化友盟分享
-//    [UMSocialData setAppKey:@"5662812967e58e2991005b9f"];
-//    [UMSocialConfig hiddenNotInstallPlatforms:nil];
+    [UMSocialData setAppKey:@"5662812967e58e2991005b9f"];
+    [UMSocialConfig hiddenNotInstallPlatforms:nil];
     
     
     return YES;
 }
+
+
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
